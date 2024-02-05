@@ -119,6 +119,15 @@ sshd:10.0.0.10
 systemctl restart sshd.service
 systemctl enable sshd.service
 
+# BACKUP
+For it you need root access via ssh (PermitRootLogin yes)
+root@hq-srv:~# mkdir -p /backup/hq-r
+root@hq-srv:~# mkdir /backup/br-r
+root@hq-srv:~# vim backup
+            #!/bin/bash
+            scp -r root@hq-r:/etc/NetworkManager/system-connections /backup/hq-r
+            scp -r root@br-r:/etc/NetworkManager/system-connections /backup/br-r
+bash backup
 
 # NTP
 LOOPBACK HQR: 
@@ -158,3 +167,9 @@ iptables -A FORWARD -m state --state NEW -j ACCEPT
 iptables -A FORWARD -m state --state INVALID -j DROP
 iptables -A FORWARD -i ens192 -j ACCEPT
 iptables -A FORWARD -i ens224 -j ACCEPT
+
+# ClamAV
+HQ-SRV и BR-SRV
+apt-get install clamav
+/etc/clamav/freshclam.conf
+![image](https://github.com/markiriy/how-to/assets/124806098/baf5be48-58f2-402f-ab50-99e97511c458)
