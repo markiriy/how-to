@@ -173,3 +173,8 @@ HQ-SRV и BR-SRV
 apt-get install clamav
 /etc/clamav/freshclam.conf
 ![image](https://github.com/markiriy/how-to/assets/124806098/baf5be48-58f2-402f-ab50-99e97511c458)
+
+# CUPS
+Необходимо на BR-SRV на рабочем столе создать обычный пустой файл
+Открываем этот файл и жмем на печать
+Выбираем параметр Cups-PDF и жмем печать. На рабочий стол сохранится файл в PDF.
