@@ -103,13 +103,13 @@ echo "PermitRootLogin no" >> /etc/openssh/sshd_config
 echo "PasswordAuthentication no" >> /etc/openssh/sshd_config
 
 DEB
-echo Port 2222 » /etc/ssh/sshd_config
-echo Port 2222 » /etc/ssh/ssh_config
+echo Port 2222 >> /etc/ssh/sshd_config
+echo Port 2222 >> /etc/ssh/ssh_config
 echo "Authorized access only!" | tee /etc/issue.net
-echo "Banner /etc/issue.net" » /etc/ssh/sshd_config
-echo "MaxAuthTries 4" » /etc/ssh/sshd_config
-echo "PermitEmptyPasswords no" » /etc/ssh/sshd_config
-echo "LoginGraceTime 300" » /etc/ssh/sshd_config
+echo "Banner /etc/issue.net" >> /etc/ssh/sshd_config
+echo "MaxAuthTries 4" >> /etc/ssh/sshd_config
+echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
+echo "LoginGraceTime 300" >> /etc/ssh/sshd_config
 echo "PermitRootLogin no" >> /etc/ssh/sshd_config
 
 echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
@@ -147,7 +147,7 @@ apr install iperf3
 iperf -s
 
 # RAID5
-mdadm —create /dev/md0 —level=5 —raid-devices=3 /dev/sdb /dev/sdc /dev/sdd
+mdadm --create /dev/md0 --level=5 --raid-devices=3 /dev/sdb /dev/sdc /dev/sdd
 
 # IPTABLES
 iptables -P INPUT DROP
@@ -155,7 +155,7 @@ iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -m state --state INVALID -j DROP
-iptables -A INPUT -p tcp -m multiport --dports 53,80,443, 22, 2222 -j ACCEPT
+iptables -A INPUT -p tcp -m multiport --dports 53,80,443,22,2222 -j ACCEPT
 iptables -A INPUT -p udp -m multiport --dports 53,500,4500 -j ACCEPT
 iptables -A INPUT -p icmp -j ACCEPT
 iptables -A INPUT -p gre -j ACCEPT
