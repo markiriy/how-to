@@ -140,10 +140,10 @@ EVERYONE:timedatectl set-timezone Europe/Moscow
 
 # IPERF3
 ISP
-apt install iperf3
+apt install iperf
 iperf -c 5.5.5.6
 HQ-R
-apr install iperf3
+apr install iperf
 iperf -s
 
 # RAID5
